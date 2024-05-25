@@ -1,13 +1,13 @@
 import Header from "./ui/Header";
 import Content from "./ui/Content";
 import Footer from "./ui/Footer";
+import Container from "./ui/Container";
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen p-4 font-mono">
+    <Container>
       <Header />
       <Content />
-      <Footer />
-    </main>
+    </Container>
   );
 }
