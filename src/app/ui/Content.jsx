@@ -12,7 +12,7 @@ export default function Content() {
   });
   
   return (
-    <div className="flex-grow pb-4 flex flex-col">
+    <div className="main-content pb-4 flex flex-col">
       {dataElements}
     </div>
   )
