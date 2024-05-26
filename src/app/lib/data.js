@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-const dataDir = path.join(process.cwd(), "src", "data");
+const dataDir = path.join(process.cwd(), "_data");
 
 export function getData(slug) {
   const dataPath = path.join(dataDir, slug);
