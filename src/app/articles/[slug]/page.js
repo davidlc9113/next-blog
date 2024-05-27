@@ -3,8 +3,18 @@ import { getData } from "@/app/lib/data"
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 
+const getArticle = (params) => {
+  // to-do: need cache?
+  return getData(`${params.slug}.md`);
+}
+
+export function generateMetadata({ params }) {
+  const article = getArticle(params);
+  return { title: `${article.title} | David Li Blog` };
+}
+
 export default function Article({ params }) {
-  const article = getData(`${params.slug}.md`);
+  const article = getArticle(params);
   
   if (!article) {
     return notFound();
@@ -13,7 +23,7 @@ export default function Article({ params }) {
   return (
     <Container>
       <div className="main-content">
-        <Markdown>{article}</Markdown>
+        <Markdown>{article.content}</Markdown>
       </div>
     </Container>
   )

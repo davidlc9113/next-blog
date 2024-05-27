@@ -6,7 +6,20 @@ const dataDir = path.join(process.cwd(), "_data");
 export function getData(slug) {
   const dataPath = path.join(dataDir, slug);
   if (fs.existsSync(dataPath)) {
-    return fs.readFileSync(dataPath).toString();
+    console.log(dataPath)
+    const date = new Date(slug.slice(0, 10)).toLocaleDateString(
+      "en-US", 
+      { month: 'long', day: 'numeric', year: 'numeric'} 
+    );
+    const content = fs.readFileSync(dataPath).toString();
+    const text = content.split(/\n+/);
+    return {
+      date: date,
+      path: slug.slice(0, -3),
+      content: content,
+      title: text[0].slice(2),
+      prolog: text[1]
+    }
   }
 }
 
@@ -24,15 +37,9 @@ export function getAllData() {
       "en-US", 
       { month: 'long', day: 'numeric', year: 'numeric'} 
     );
-  console.log(fileName.slice(0, -3))
-  const text = getData(fileName).split(/\n+/);
-    allData.push({
-      file: fileName, 
-      path: fileName.slice(0, -3),
-      date: date,
-      title: text[0].slice(2),
-      prolog: text[1]
-    });
+    const rawFile = getData(fileName);
+    allData.push(rawFile);
   });
+
   return allData.sort((a, b) => getTime(b) - getTime(a));
 }
