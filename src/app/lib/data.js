@@ -21,7 +21,11 @@ export function getAllData() {
 
   rawFiles.forEach(fileName => {
     const stat = fs.statSync(path.join(dataDir, fileName));
-    allData.push({ file: fileName, stat: stat });
+    const date = new Date(stat.birthtime).toLocaleDateString(
+      "en-US", 
+      { month: 'long', day: 'numeric', year: 'numeric'} 
+    );
+    allData.push({ file: fileName, stat: stat, date: date });
   });
   return allData.sort((a, b) => getTime(b) - getTime(a));
 }
