@@ -6,7 +6,7 @@ const dataDir = path.join(process.cwd(), "_data");
 export function getData(slug) {
   const dataPath = path.join(dataDir, slug);
   if (fs.existsSync(dataPath)) {
-    console.log(dataPath)
+    // console.log(dataPath)
     const date = new Date(slug.slice(0, 10)).toLocaleDateString(
       "en-US", 
       { month: 'long', day: 'numeric', year: 'numeric'} 
