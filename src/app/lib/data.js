@@ -11,12 +11,17 @@ export function getData(slug) {
 }
 
 export function getAllData() {
-  const rawData = fs.readdirSync(dataDir);
+  const allData = [];
+  const rawFiles = fs.readdirSync(dataDir);
   
   // sort by createdAt desc
   function getTime(e) {
-    const stat = fs.statSync(path.join(dataDir, e));
-    return new Date(stat.birthtime).getTime();
+    return new Date(e.stat.birthtime).getTime();
   }
-  return rawData.sort((a, b) => getTime(b) - getTime(a));
+
+  rawFiles.forEach(fileName => {
+    const stat = fs.statSync(path.join(dataDir, fileName));
+    allData.push({ file: fileName, stat: stat });
+  });
+  return allData.sort((a, b) => getTime(b) - getTime(a));
 }
