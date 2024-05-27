@@ -1,7 +1,10 @@
+import Contact from "./Contact"
+
 export default function Footer() {
   return (
     <footer>
-      <a href="/">footer link</a>
+      <p className="mb-4">© 2024 David Li. All rights reserved.</p>
+      <Contact />
     </footer>
   )
 }
