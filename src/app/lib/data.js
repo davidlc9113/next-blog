@@ -20,12 +20,19 @@ export function getAllData() {
   }
 
   rawFiles.forEach(fileName => {
-    const stat = fs.statSync(path.join(dataDir, fileName));
-    const date = new Date(stat.birthtime).toLocaleDateString(
+    const date = new Date(fileName.slice(0, 10)).toLocaleDateString(
       "en-US", 
       { month: 'long', day: 'numeric', year: 'numeric'} 
     );
-    allData.push({ file: fileName, stat: stat, date: date });
+  console.log(fileName.slice(0, -3))
+  const text = getData(fileName).split(/\n+/);
+    allData.push({
+      file: fileName, 
+      path: fileName.slice(0, -3),
+      date: date,
+      title: text[0].slice(2),
+      prolog: text[1]
+    });
   });
   return allData.sort((a, b) => getTime(b) - getTime(a));
 }

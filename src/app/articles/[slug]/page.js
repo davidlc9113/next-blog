@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 
 export default function Article({ params }) {
-  const article = getData(params.slug);
+  const article = getData(`${params.slug}.md`);
+  
   if (!article) {
     return notFound();
   }
