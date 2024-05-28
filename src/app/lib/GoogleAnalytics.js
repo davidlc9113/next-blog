@@ -6,13 +6,10 @@ export default function GoogleAnalytics() {
   return (
     <>
       <Script
-        strategy='lazyOnload'
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
       />
-      <Script 
-        id='google-analytics'
-        strategy='lazyOnload'
-      >
+      <Script>
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
