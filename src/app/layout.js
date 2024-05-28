@@ -1,6 +1,5 @@
 import "./globals.css";
 import GithubCat from "./ui/GithubCat";
-import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata = {
   title: "David Li Blog",
@@ -14,7 +13,6 @@ export default function RootLayout({ children }) {
         <GithubCat />
         {children}
       </body>
-      <GoogleAnalytics gaId={process.env.GA_ID} />
     </html>
   );
 }
