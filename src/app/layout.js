@@ -1,5 +1,6 @@
 import "./globals.css";
 import GithubCat from "./ui/GithubCat";
+import GoogleAnalytics from "./lib/GoogleAnalytics";
 
 export const metadata = {
   title: "David Li Blog",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
         <GithubCat />
         {children}
       </body>
+      <GoogleAnalytics />
     </html>
   );
 }
