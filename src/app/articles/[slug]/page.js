@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 
 const getArticle = (params) => {
-  // to-do: need cache?
   return getData(`${params.slug}.md`);
 }
 

@@ -6,7 +6,6 @@ const dataDir = path.join(process.cwd(), "_data");
 export function getData(fileName) {
   const dataPath = path.join(dataDir, fileName);
   if (fs.existsSync(dataPath)) {
-    // console.log(dataPath)
     const date = new Date(fileName.slice(0, 10)).toLocaleDateString(
       "en-US", 
       { month: 'long', day: 'numeric', year: 'numeric'} 
@@ -28,14 +27,10 @@ export function getAllData() {
   const rawFiles = fs.readdirSync(dataDir);
   
   function getCreated(e) {
-    return new Date(e.stat.birthtime).getTime();
+    return new Date(e.date).getTime();
   }
 
-  rawFiles.forEach(fileName => {
-    const rawFile = getData(fileName);
-    allData.push(rawFile);
-  });
-
-  // sort by createdAt desc
-  return allData.sort((a, b) => getCreated(b) - getCreated(a));
+  return rawFiles
+    .map(e => getData(e))
+    .sort((a, b) => getCreated(b) - getCreated(a));
 }

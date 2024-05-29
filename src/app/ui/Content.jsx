@@ -9,7 +9,7 @@ export default function Content() {
         href={`/articles/${e.path}`} 
         key={e.path} 
         className="flex flex-col justify-center items-center
-          p-4 my-4 mx-auto border shadow"
+          p-4 my-4 mx-auto border shadow w-full h-full"
       >
         <h2>{e.title}</h2>
         <p className=" text-sm mb-2">{e.date}</p>
