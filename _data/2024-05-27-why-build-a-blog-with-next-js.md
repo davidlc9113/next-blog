@@ -6,7 +6,7 @@ In the last few days, I've been learning React, which is one of the most popular
 
 The React official website [https://react.dev/learn/start-a-new-react-project](https://react.dev/learn/start-a-new-react-project) says, *"If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community."*. I agree. I find it much easier to develop this blog with a framework.
 
-**The second reason I chose Next.js is that it's the first one on the framework list.** It's not bad! It has many examples and libraries, such as this Markdown parser: [react-markdown](https://github.com/remarkjs/react-markdown).
+**I chose Next.js for another reason: it’s at the top of the framework list.** It's pretty good! It has many examples and libraries, such as this Markdown parser: [react-markdown](https://github.com/remarkjs/react-markdown).
 
 ## Conclusion
 

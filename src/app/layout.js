@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <GithubCat />
         {children}
       </body>
-      <GoogleAnalytics />
+      { process.env.NODE_ENV === 'production' && <GoogleAnalytics /> }
     </html>
   );
 }

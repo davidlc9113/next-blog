@@ -18,7 +18,7 @@ export function getData(fileName) {
       path: fileName.slice(0, -3),
       content: content,
       title: text[0].slice(2),
-      prolog: text[1]
+      intro: text[1]
     }
   }
 }

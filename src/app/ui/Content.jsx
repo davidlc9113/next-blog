@@ -13,7 +13,7 @@ export default function Content() {
       >
         <h2>{e.title}</h2>
         <p className=" text-sm mb-2">{e.date}</p>
-        <p>{e.prolog}</p>
+        <p>{e.intro}</p>
       </Link>
     )
   });
