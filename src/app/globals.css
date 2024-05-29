@@ -34,3 +34,14 @@ p {
 p a {
   text-decoration: underline;
 }
+
+ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-bottom: 1rem;
+}
+
+pre {
+  display: flex;
+  justify-content: center;
+}
