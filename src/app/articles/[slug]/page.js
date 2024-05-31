@@ -10,7 +10,7 @@ const getArticle = (params) => {
 
 export function generateMetadata({ params }) {
   const article = getArticle(params);
-  return { title: `${article.title} | David Li Blog` };
+  return { title: `${article.title} | David Li's Blog` };
 }
 
 export default function Article({ params }) {

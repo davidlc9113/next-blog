@@ -3,7 +3,7 @@ import GithubCat from "./ui/GithubCat";
 import GoogleAnalytics from "./lib/GoogleAnalytics";
 
 export const metadata = {
-  title: "David Li Blog",
+  title: "David Li's Blog",
   description: "Learning React and watching Netflix",
 };
 
