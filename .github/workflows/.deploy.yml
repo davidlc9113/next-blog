@@ -3,7 +3,9 @@ name: Deploy to EC2
 on:
   push:
     branches:
-      - feature/github-actions
+      - main
+    paths:
+      - _data/**
 
 jobs:
   deploy:
