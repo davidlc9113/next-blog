@@ -75,7 +75,7 @@ server {
 EOF'
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
-sudo nginx -t # for test nginx configuration
+sudo nginx -t
 sudo systemctl restart nginx
 ```
 
@@ -88,6 +88,52 @@ Let's wait a few minutes for [DNS Checker](https://dnschecker.org/) to confirm t
 sudo certbot --nginx -d example.com -d www.example.com
 ```
 
+Now let's enhance the experience by update the configuration file `/etc/nginx/sites-available/example.com`.
+* Redirect `www.example.com` to `example.com`.
+* Enable HTTP/2.
+
+```bash
+server {
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection upgrade;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    listen 443 ssl http2; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+server {
+    server_name www.example.com;
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    return 301 https://example.com$request_uri;
+}
+```
+
+And do not forget to reload the configuration.
+
+```bash
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
 ## Conclusion
 
-OK! It works now! Many of the steps above require sudo access, which is administrator access. So it's better to perform them manually for the first time. Next, we'll automate the deployment steps to ensure that the website updates automatically whenever you update the code.
+OK! It works now! Many of the steps above require sudo access, which is administrator access. So it's better to perform them manually for the first time. Next, we'll automate the deployment steps to ensure that the website updates automatically whenever we update the code.
