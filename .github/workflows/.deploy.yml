@@ -9,17 +9,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.x, 18.x]
-
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
-      - run: npm test --if-present
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: ${{ secrets.EC2_PORT }}
+          script_stop: true
+          script: |
+            cd ~/next-blog
+            git pull --rebase
+            export N_PREFIX=$HOME/.n
+            export PATH=$N_PREFIX/bin:$PATH
+            npm ci
+            npm run build
+            npm test --if-present
+            pm2 restart all --silent
