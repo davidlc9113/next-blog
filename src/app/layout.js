@@ -13,8 +13,8 @@ export default function RootLayout({ children }) {
       <body className="flex flex-col">
         <GithubCat />
         {children}
+        { process.env.NODE_ENV === "production" && <GoogleAnalytics /> }
       </body>
-      { process.env.NODE_ENV === "production" && <GoogleAnalytics /> }
     </html>
   );
 }
