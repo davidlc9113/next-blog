@@ -6,7 +6,7 @@ AWS Elastic Compute Cloud or AWS EC2 is my choice, but I believe other services 
 
 ## Select a pricing plan
 
-At first, I chose the [t4g.micro plan](https://aws.amazon.com/ec2/instance-types/t4/). It's the cheapest option for 1 GB memory machines. It will cost about $6 if the server runs 24 hours a day for 30 days.
+At first, I chose the [t4g.micro plan](https://aws.amazon.com/ec2/instance-types/t4/). It's the cheapest option for 1 GB memory machines.
 
 Although it's ARM-based, the blog app already works well on my ARM-based MacBook. So I decided to give it a try, and it works great! I even got a better score on [PageSpeed Insights](https://pagespeed.web.dev/) compared to the same 1GB memory x86 machine.
 
