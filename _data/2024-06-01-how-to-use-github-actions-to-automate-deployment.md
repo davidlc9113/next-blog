@@ -56,4 +56,3 @@ sudo /sbin/swapon /var/swap.1
 ```
 
 That's it! Really simple to configure, right? Enjoy the automated deployment and happy coding!
-

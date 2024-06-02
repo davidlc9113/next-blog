@@ -1,7 +1,7 @@
 import React from 'react';
 import Script from 'next/script';
 
-export default function GoogleAnalytics() {
+export default function Analytics() {
   const token = process.env.CF_TOKEN;
   return (
     <>

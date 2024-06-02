@@ -1,6 +1,6 @@
 import "./globals.css";
 import GithubCat from "./ui/GithubCat";
-import GoogleAnalytics from "./lib/GoogleAnalytics";
+import Analytics from "./lib/Analytics";
 
 export const metadata = {
   title: "David Li's Blog",
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <body className="flex flex-col">
         <GithubCat />
         {children}
-        { process.env.NODE_ENV === "production" && <GoogleAnalytics /> }
+        { process.env.NODE_ENV === "production" && <Analytics /> }
       </body>
     </html>
   );
