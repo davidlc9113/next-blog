@@ -2,7 +2,10 @@ import Container from "@/app/ui/Container"
 import { getData } from "@/app/lib/data"
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { 
+  stackoverflowLight as style
+} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 const getArticle = (params) => {
   return getData(`${params.slug}.md`);
@@ -22,7 +25,7 @@ export default function Article({ params }) {
   
   return (
     <Container>
-      <div className="main-content">
+      <div className="main-content w-full max-w-sm md:max-w-3xl">
         <Markdown
           components={{
             code(props) {
@@ -32,8 +35,9 @@ export default function Article({ params }) {
                 <SyntaxHighlighter
                   {...rest}
                   PreTag="div"
-                  className="max-w-sm md:max-w-xl"
+                  className="w-full"
                   language={match[1]}
+                  style={style}
                 >
                   {String(children).replace(/\n$/, '')}
                 </SyntaxHighlighter>

@@ -11,7 +11,7 @@ export default function Content() {
         className="flex flex-col justify-center items-center
           p-4 my-4 mx-auto border shadow w-full h-full"
       >
-        <h2>{e.title}</h2>
+        <h2 className=" text-center">{e.title}</h2>
         <p className=" text-sm mb-2">{e.date}</p>
         <p>{e.intro}</p>
       </Link>
