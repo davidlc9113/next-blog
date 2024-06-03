@@ -10,13 +10,11 @@ export const metadata = {
       ...METADATA,
       ...{
         type: "website",
-        url: BASE_URL,
-        images: [
-          {
-            url: `${BASE_URL}/favicon.ico`
-          }
-        ]
+        url: BASE_URL
       }
+    },
+    twitter: {
+      card: "summary_large_image"
     }
   }
 };
