@@ -1,5 +1,7 @@
 import Container from "@/app/ui/Container"
 import { getData } from "@/app/lib/data"
+import { METADATA } from "@/app/lib/constants";
+
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -13,7 +15,13 @@ const getArticle = (params) => {
 
 export function generateMetadata({ params }) {
   const article = getArticle(params);
-  return { title: `${article.title} | David Li's Blog` };
+  const articleTitle = `${article.title} | ${METADATA.title}`;
+  return {
+    title: articleTitle,
+    openGraph: {
+      title: articleTitle
+    }
+  };
 }
 
 export default function Article({ params }) {

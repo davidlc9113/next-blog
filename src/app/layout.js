@@ -1,10 +1,24 @@
 import "./globals.css";
 import GithubCat from "./ui/GithubCat";
 import Analytics from "./lib/Analytics";
+import { BASE_URL, METADATA } from "./lib/constants";
 
 export const metadata = {
-  title: "David Li's Blog",
-  description: "Learning React and watching Netflix",
+  ...METADATA,
+  ...{
+    openGraph: {
+      ...METADATA,
+      ...{
+        type: "website",
+        url: BASE_URL,
+        images: [
+          {
+            url: `${BASE_URL}/favicon.ico`
+          }
+        ]
+      }
+    }
+  }
 };
 
 export default function RootLayout({ children }) {

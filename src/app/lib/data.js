@@ -23,7 +23,6 @@ export function getData(fileName) {
 }
 
 export function getAllData() {
-  const allData = [];
   const rawFiles = fs.readdirSync(dataDir);
   
   function getCreated(e) {
