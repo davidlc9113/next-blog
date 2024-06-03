@@ -1,5 +1,5 @@
 import { getAllData } from "./lib/data";
-import { BASE_URL } from "./lib/constants";
+import { BASE_URL, ARTICLE_URL } from "./lib/constants";
 
 export default function sitemap() {
   return [
@@ -13,7 +13,7 @@ export default function sitemap() {
     ],
     ...getAllData().map(e => {
       return {
-        url: `${BASE_URL}/articles/${e.path}`,
+        url: ARTICLE_URL(e.path),
         lastModified: new Date(e.date),
         changeFrequency: 'daily',
         priority: 0.9

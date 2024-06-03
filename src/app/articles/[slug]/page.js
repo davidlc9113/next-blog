@@ -1,6 +1,6 @@
 import Container from "@/app/ui/Container"
 import { getData } from "@/app/lib/data"
-import { METADATA } from "@/app/lib/constants";
+import { ARTICLE_URL, METADATA } from "@/app/lib/constants";
 
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
@@ -13,13 +13,18 @@ const getArticle = (params) => {
   return getData(`${params.slug}.md`);
 }
 
-export function generateMetadata({ params }) {
+export async function generateMetadata({ params }, parent) {
   const article = getArticle(params);
   const articleTitle = `${article.title} | ${METADATA.title}`;
+  const prevOpenGraph = (await parent).openGraph;
   return {
     title: articleTitle,
     openGraph: {
-      title: articleTitle
+      ...prevOpenGraph,
+      ...{
+        title: articleTitle,
+        url: ARTICLE_URL(article.path)
+      }
     }
   };
 }
