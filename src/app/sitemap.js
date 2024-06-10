@@ -7,7 +7,7 @@ export default function sitemap() {
       {
         url: BASE_URL,
         lastModified: new Date(),
-        changeFrequency: 'yearly',
+        changeFrequency: 'daily',
         priority: 1
       }
     ],
