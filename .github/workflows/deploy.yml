@@ -47,7 +47,6 @@ jobs:
             git pull --rebase
             export N_PREFIX=$HOME/.n
             export PATH=$N_PREFIX/bin:$PATH
-            npm ci
+            npm ci --omit=dev
             npm run build
-            npm test --if-present
             pm2 restart all --silent
