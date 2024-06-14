@@ -12,9 +12,9 @@ export default function Content() {
           p-4 my-4 mx-auto w-full h-full border shadow"
       >
         <h2 className="text-center my-0">{e.title}</h2>
-        <p className="text-sm my-2">{e.date}</p>
+        <time className="text-sm my-2">{e.date}</time>
         <p className="my-2">{e.intro}</p>
-        <div className="text-sm my-0 py-2 px-4 border shadow rounded-lg">
+        <div className="text-sm mt-2 py-2 px-4 border shadow rounded-lg">
           Read more
         </div>
       </Link>
@@ -22,8 +22,8 @@ export default function Content() {
   });
   
   return (
-    <div className="main-content pb-4 flex flex-col">
+    <main className="main-content pb-4 flex flex-col">
       {dataElements}
-    </div>
+    </main>
   )
 }

@@ -38,7 +38,7 @@ export default function Article({ params }) {
   
   return (
     <Container>
-      <div className="main-content w-full max-w-sm md:max-w-3xl">
+      <main className="main-content w-full max-w-sm md:max-w-3xl">
         <Markdown
           components={{
             code(props) {
@@ -64,7 +64,7 @@ export default function Article({ params }) {
         >
           {article.content}
         </Markdown>
-      </div>
+      </main>
     </Container>
   )
 }
