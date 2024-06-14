@@ -20,5 +20,6 @@ test('has article', async ({ page }) => {
 
   const text = await link.getByRole('heading').textContent();
   await link.click();
+  await expect(page).toHaveTitle(new RegExp(text));
   await expect(page.getByRole('heading', { name: text })).toBeVisible();
 })
