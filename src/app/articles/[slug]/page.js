@@ -15,10 +15,11 @@ const getArticle = (params) => {
 
 export async function generateMetadata({ params }, parent) {
   const article = getArticle(params);
-  const articleTitle = `${article.title} | ${METADATA.title}`;
+  const articleTitle = `${article.title} - ${METADATA.title}`;
   const prevOpenGraph = (await parent).openGraph;
   return {
     title: articleTitle,
+    description: article.intro,
     openGraph: {
       ...prevOpenGraph,
       ...{

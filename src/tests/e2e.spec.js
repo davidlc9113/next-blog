@@ -6,11 +6,11 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('has title', async ({ page }) => {
-  const title = METADATA.title;
-  expect(title).toMatch(/.+/);
+  const text = METADATA.title;
+  expect(text).toMatch(/.+/);
   
-  await expect(page).toHaveTitle(title);
-  await expect(page.getByRole('heading', { name: title })).toBeVisible();
+  await expect(page).toHaveTitle(new RegExp(text));
+  await expect(page.getByRole('heading', { name: text })).toBeVisible();
 })
 
 test('has article', async ({ page }) => {

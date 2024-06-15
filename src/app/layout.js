@@ -3,19 +3,15 @@ import GithubCat from "./ui/GithubCat";
 import Analytics from "./lib/Analytics";
 import { BASE_URL, METADATA } from "./lib/constants";
 
+const title = `${METADATA.title} - ${METADATA.description}`;
 export const metadata = {
-  ...METADATA,
-  ...{
-    openGraph: {
-      ...METADATA,
-      ...{
-        type: "website",
-        url: BASE_URL
-      }
-    },
-    twitter: {
-      card: "summary_large_image"
-    }
+  title: title,
+  description: METADATA.description,
+  openGraph: {
+    title: title,
+    description: METADATA.description,
+    type: "website",
+    url: BASE_URL
   }
 };
 
