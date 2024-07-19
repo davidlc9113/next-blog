@@ -22,7 +22,7 @@
     "tailwindcss": "^3.4.6"
   },
   "devDependencies": {
-    "@playwright/test": "^1.44.1",
-    "@types/node": "^20.14.2"
+    "@playwright/test": "^1.45.2",
+    "@types/node": "^20.14.11"
   }
 }
